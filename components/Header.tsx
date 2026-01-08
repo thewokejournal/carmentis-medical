@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -164,14 +164,26 @@ const Header = () => {
             >
               Contact
             </Link>
-            <a
-              href="tel:+263772859799"
-              className="mt-4 inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-all"
-              onClick={toggleMenu}
-            >
-              <Phone size={20} />
-              Call Us
-            </a>
+            <div className="mt-4 flex flex-col gap-3">
+              <a
+                href="https://wa.me/263772859799?text=Hello%2C%20I'd%20like%20to%20enquire%20about%20services%20at%20Carmentis%20Medical%20Centre."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white font-medium rounded-xl hover:bg-green-600 transition-all"
+                onClick={toggleMenu}
+              >
+                <MessageCircle size={20} />
+                WhatsApp Us
+              </a>
+              <a
+                href="tel:+263772859799"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-all"
+                onClick={toggleMenu}
+              >
+                <Phone size={20} />
+                Call Us
+              </a>
+            </div>
           </div>
         </div>
       )}

@@ -22,6 +22,7 @@ export default function DoctorsPage() {
       role: "General Practitioner",
       image: "/doctor1.jpg",
       bio: "Dr. Moyo is an experienced General Practitioner with a passion for compassionate, patient-centered family care. With years of dedicated service, Dr. Moyo brings expertise in managing a wide range of health conditions while maintaining a warm, approachable demeanor.",
+      philosophy: "Every patient deserves to be heard, understood, and treated with dignity.",
       specialties: [
         "Family Medicine",
         "Chronic Disease Management",
@@ -35,6 +36,7 @@ export default function DoctorsPage() {
       role: "Family Medicine Practitioner",
       image: "/doctor2.jpg",
       bio: "Dr. Chikore specializes in preventative healthcare, women's health, and long-term wellness. Her holistic approach ensures that every family member receives comprehensive care tailored to their unique needs and life stage.",
+      philosophy: "Prevention is the best medicine—I'm here to help you stay healthy.",
       specialties: [
         "Women's Health",
         "Preventative Medicine",
@@ -108,9 +110,16 @@ export default function DoctorsPage() {
                   <h2 className="text-4xl md:text-5xl font-light text-neutral-900 mb-6">
                     {doctor.name}
                   </h2>
-                  <p className="text-lg text-neutral-700 leading-relaxed mb-8">
+                  <p className="text-lg text-neutral-700 leading-relaxed mb-6">
                     {doctor.bio}
                   </p>
+
+                  {/* Care Philosophy */}
+                  <div className="bg-gradient-to-r from-primary-50 to-teal-50 rounded-2xl p-6 mb-8 border-l-4 border-primary-500">
+                    <p className="text-base italic text-neutral-700">
+                      "{doctor.philosophy}"
+                    </p>
+                  </div>
 
                   {/* Specialties */}
                   <div className="mb-8">

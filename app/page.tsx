@@ -30,7 +30,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-sm font-medium text-neutral-700">
-                  5.0 (4824 Reviews)
+                  Trusted by families in Borrowdale
                 </span>
               </div>
 
@@ -269,9 +269,14 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold text-neutral-900 mb-2">
                   Dr. Tendai Moyo
                 </h3>
-                <p className="text-neutral-600 leading-relaxed">
+                <p className="text-neutral-600 leading-relaxed mb-4">
                   Experienced GP focused on compassionate, patient-centered family care with years of dedicated service.
                 </p>
+                <div className="pt-4 border-t border-neutral-100">
+                  <p className="text-sm italic text-neutral-500">
+                    "Every patient deserves to be heard, understood, and treated with dignity."
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -293,9 +298,14 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold text-neutral-900 mb-2">
                   Dr. Ruvimbo Chikore
                 </h3>
-                <p className="text-neutral-600 leading-relaxed">
+                <p className="text-neutral-600 leading-relaxed mb-4">
                   Specializes in preventative healthcare, women's health, and long-term wellness for all family members.
                 </p>
+                <div className="pt-4 border-t border-neutral-100">
+                  <p className="text-sm italic text-neutral-500">
+                    "Prevention is the best medicine—I'm here to help you stay healthy."
+                  </p>
+                </div>
               </div>
             </div>
           </div>
