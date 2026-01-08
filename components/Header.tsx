@@ -1,113 +1,182 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "Doctors", href: "/doctors" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative w-12 h-12">
-                <Image
-                  src="/logo.png"
-                  alt="Carmentis Medical Centre"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-poppins font-semibold text-neutral-800 text-lg leading-tight">
-                  Carmentis
-                </span>
-                <span className="text-xs text-neutral-600 leading-tight">
-                  Medical Centre
-                </span>
-              </div>
-            </Link>
+    <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-neutral-100">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-3 group">
+          <Image
+            src="/logo.png"
+            alt="Carmentis Medical Centre Logo"
+            width={48}
+            height={48}
+            className="h-12 w-12 group-hover:scale-105 transition-transform"
+          />
+          <div className="flex flex-col">
+            <span className="text-2xl font-semibold text-neutral-900">Carmentis</span>
+            <span className="text-xs text-neutral-500 -mt-1">Medical Centre</span>
           </div>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-neutral-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-            <a
-              href="tel:+263772859799"
-              className="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
-            >
-              <Phone size={16} />
-              <span className="hidden lg:inline">Call Us</span>
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-neutral-700 hover:text-primary-600 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-expanded={mobileMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {mobileMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
+        <div className="hidden md:flex items-center space-x-1">
+          <Link
+            href="/"
+            className={`px-4 py-2 rounded-full font-medium transition-all ${
+              isActive("/")
+                ? "bg-primary-50 text-primary-700"
+                : "text-neutral-600 hover:text-primary-600 hover:bg-primary-50/50"
+            }`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/services"
+            className={`px-4 py-2 rounded-full font-medium transition-all ${
+              isActive("/services")
+                ? "bg-primary-50 text-primary-700"
+                : "text-neutral-600 hover:text-primary-600 hover:bg-primary-50/50"
+            }`}
+          >
+            Services
+          </Link>
+          <Link
+            href="/doctors"
+            className={`px-4 py-2 rounded-full font-medium transition-all ${
+              isActive("/doctors")
+                ? "bg-primary-50 text-primary-700"
+                : "text-neutral-600 hover:text-primary-600 hover:bg-primary-50/50"
+            }`}
+          >
+            Doctors
+          </Link>
+          <Link
+            href="/about"
+            className={`px-4 py-2 rounded-full font-medium transition-all ${
+              isActive("/about")
+                ? "bg-primary-50 text-primary-700"
+                : "text-neutral-600 hover:text-primary-600 hover:bg-primary-50/50"
+            }`}
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className={`px-4 py-2 rounded-full font-medium transition-all ${
+              isActive("/contact")
+                ? "bg-primary-50 text-primary-700"
+                : "text-neutral-600 hover:text-primary-600 hover:bg-primary-50/50"
+            }`}
+          >
+            Contact
+          </Link>
+          
+          <a
+            href="tel:+263772859799"
+            className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-primary-600 text-white font-medium rounded-full hover:bg-primary-700 transition-all shadow-md hover:shadow-lg"
+          >
+            <Phone size={18} />
+            <span className="hidden lg:inline">Call Us</span>
+          </a>
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden pb-4">
-            <div className="space-y-1 pt-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <a
-                href="tel:+263772859799"
-                className="flex items-center gap-2 px-3 py-2 mt-4 text-center bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
-              >
-                <Phone size={18} />
-                Call Us Now
-              </a>
-            </div>
-          </div>
-        )}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-neutral-600 focus:outline-none p-2 hover:bg-primary-50 rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-neutral-100 shadow-lg">
+          <div className="flex flex-col px-4 py-6 space-y-2">
+            <Link
+              href="/"
+              className={`px-4 py-3 rounded-xl font-medium transition-all ${
+                isActive("/")
+                  ? "bg-primary-50 text-primary-700"
+                  : "text-neutral-700 hover:bg-neutral-50"
+              }`}
+              onClick={toggleMenu}
+            >
+              Home
+            </Link>
+            <Link
+              href="/services"
+              className={`px-4 py-3 rounded-xl font-medium transition-all ${
+                isActive("/services")
+                  ? "bg-primary-50 text-primary-700"
+                  : "text-neutral-700 hover:bg-neutral-50"
+              }`}
+              onClick={toggleMenu}
+            >
+              Services
+            </Link>
+            <Link
+              href="/doctors"
+              className={`px-4 py-3 rounded-xl font-medium transition-all ${
+                isActive("/doctors")
+                  ? "bg-primary-50 text-primary-700"
+                  : "text-neutral-700 hover:bg-neutral-50"
+              }`}
+              onClick={toggleMenu}
+            >
+              Doctors
+            </Link>
+            <Link
+              href="/about"
+              className={`px-4 py-3 rounded-xl font-medium transition-all ${
+                isActive("/about")
+                  ? "bg-primary-50 text-primary-700"
+                  : "text-neutral-700 hover:bg-neutral-50"
+              }`}
+              onClick={toggleMenu}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className={`px-4 py-3 rounded-xl font-medium transition-all ${
+                isActive("/contact")
+                  ? "bg-primary-50 text-primary-700"
+                  : "text-neutral-700 hover:bg-neutral-50"
+              }`}
+              onClick={toggleMenu}
+            >
+              Contact
+            </Link>
+            <a
+              href="tel:+263772859799"
+              className="mt-4 inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-all"
+              onClick={toggleMenu}
+            >
+              <Phone size={20} />
+              Call Us
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
-}
+};
 
-
+export default Header;

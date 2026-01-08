@@ -1,6 +1,0 @@
-<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="400" fill="#E0F2FE"/>
-  <circle cx="200" cy="150" r="60" fill="#0EA5E9"/>
-  <rect x="140" y="220" width="120" height="150" rx="60" fill="#0EA5E9"/>
-  <text x="200" y="380" font-family="Arial" font-size="16" fill="#0369A1" text-anchor="middle">Dr. Tendai Moyo</text>
-</svg>
