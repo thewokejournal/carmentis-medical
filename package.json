@@ -1,14 +1,18 @@
 {
   "name": "carmentis-medical",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Carmentis Medical Centre - A warm, family-oriented medical clinic website",
   "private": true,
+  "author": "Carmentis Medical Centre",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
